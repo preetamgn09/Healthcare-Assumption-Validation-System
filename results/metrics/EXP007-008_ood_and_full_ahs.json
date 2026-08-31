@@ -1,0 +1,818 @@
+{
+  "experiment_ids": [
+    "EXP007",
+    "EXP008"
+  ],
+  "environment": {
+    "timestamp_utc": "2026-08-30T06:11:13.793261+00:00",
+    "git_commit": "NOT_A_GIT_REPO",
+    "python": "3.13.7",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.0"
+    }
+  },
+  "config_hash": "9d0c9d48c4bad67c51e9adce69fac547ed93e8f4f79d3208d539a98fb73a3b46",
+  "monitor_config_hash": "64363eedc32f660eafae852000c24d1f4b0802dfef862dd0dece58b714dc96d5",
+  "exp007_ood_bakeoff": {
+    "groups": {
+      "paediatric_and_adolescent": {
+        "n_in_group": 557,
+        "rationale": "age bands almost absent from the training population",
+        "auroc": {
+          "mahalanobis": 0.9301438801663287,
+          "knn": 0.4313255666031012,
+          "isolation_forest": 0.6094027009762318,
+          "predictive_entropy": 0.23486292713333567,
+          "max_softmax": 0.23486292713333567,
+          "energy": 0.8022050916698712
+        }
+      },
+      "rare_specialty": {
+        "n_in_group": 8681,
+        "rationale": "specialties outside the training vocabulary",
+        "auroc": {
+          "mahalanobis": 0.5480542294277656,
+          "knn": 0.5448103872524728,
+          "isolation_forest": 0.5223250197083708,
+          "predictive_entropy": 0.5382633217795443,
+          "max_softmax": 0.5382633217795443,
+          "energy": 0.3956505640704737
+        }
+      },
+      "extreme_prior_utilisation": {
+        "n_in_group": 1395,
+        "rationale": "tail of prior inpatient admissions",
+        "auroc": {
+          "mahalanobis": 0.786191004744679,
+          "knn": 0.9459435571250259,
+          "isolation_forest": 0.6558277774256277,
+          "predictive_entropy": 0.9789022225408028,
+          "max_softmax": 0.9789022225408028,
+          "energy": 0.01597377686600532
+        }
+      }
+    },
+    "mean_auroc": {
+      "mahalanobis": 0.7547963714462577,
+      "knn": 0.6406931703268666,
+      "isolation_forest": 0.59585183270341,
+      "predictive_entropy": 0.584009490484561,
+      "max_softmax": 0.584009490484561,
+      "energy": 0.4046098108687834
+    },
+    "ranking": [
+      "mahalanobis",
+      "knn",
+      "isolation_forest",
+      "predictive_entropy",
+      "max_softmax",
+      "energy"
+    ],
+    "uncertainty_family_mean": 0.5242095972793018,
+    "distance_density_family_mean": 0.6637804581588447,
+    "within_0.10_of_chance": [
+      "isolation_forest",
+      "predictive_entropy",
+      "max_softmax",
+      "energy"
+    ],
+    "energy_note": "computed on a logistic regression fitted to the same features; the frozen gradient-boosted model produces no logit vector"
+  },
+  "exp008_complete_ahs": {
+    "monitors": [
+      {
+        "monitor": "a1_distribution",
+        "assumption": "A1",
+        "evidence_class": "OBSERVED",
+        "raw": {
+          "max_psi": 3.328542650501337,
+          "worst_feature": "admission_type_id",
+          "n_features_above_psi_threshold": 5,
+          "n_features_moderate": 1,
+          "n_features_significant_fdr": 22,
+          "n_features_tested": 25,
+          "mmd": {
+            "mmd2": 0.033184471794323496,
+            "n_used": 20000,
+            "bandwidth_gamma": 0.09120706333015184
+          }
+        },
+        "threshold": {
+          "psi": 0.2,
+          "psi_minor": 0.1,
+          "alpha_fdr": 0.05
+        },
+        "violation": 1.0,
+        "triggered": true,
+        "evidence": {
+          "per_feature": {
+            "time_in_hospital": {
+              "psi": 0.012452198429908076,
+              "test": "ks",
+              "statistic": 0.02917139968883417,
+              "p_value": 4.574659642538538e-14,
+              "significant_fdr": true
+            },
+            "num_lab_procedures": {
+              "psi": 0.26277686019416113,
+              "test": "ks",
+              "statistic": 0.22123916803291455,
+              "p_value": 0.0,
+              "significant_fdr": true
+            },
+            "num_procedures": {
+              "psi": 0.2671301357998942,
+              "test": "ks",
+              "statistic": 0.24112452392053924,
+              "p_value": 0.0,
+              "significant_fdr": true
+            },
+            "num_medications": {
+              "psi": 0.04725955030042117,
+              "test": "ks",
+              "statistic": 0.0725140453099491,
+              "p_value": 9.151729477737454e-85,
+              "significant_fdr": true
+            },
+            "number_outpatient": {
+              "psi": 0.0001273040747897723,
+              "test": "ks",
+              "statistic": 0.004099355247518699,
+              "p_value": 0.9146753136281996,
+              "significant_fdr": false
+            },
+            "number_emergency": {
+              "psi": 0.0,
+              "test": "ks",
+              "statistic": 0.06388235141692511,
+              "p_value": 7.24662230054483e-66,
+              "significant_fdr": true
+            },
+            "number_inpatient": {
+              "psi": 0.025728279844677106,
+              "test": "ks",
+              "statistic": 0.060277923165742764,
+              "p_value": 1.0999197271890978e-58,
+              "significant_fdr": true
+            },
+            "number_diagnoses": {
+              "psi": 0.12596729274595908,
+              "test": "ks",
+              "statistic": 0.13245265559942082,
+              "p_value": 1.4666974358506479e-282,
+              "significant_fdr": true
+            },
+            "race": {
+              "psi": 0.026766846668209075,
+              "test": "chi2",
+              "statistic": 1325.2837496878833,
+              "p_value": 2.125960149143705e-284,
+              "significant_fdr": true
+            },
+            "gender": {
+              "psi": 0.0006153562171808625,
+              "test": "chi2",
+              "statistic": 34.30688940837979,
+              "p_value": 4.707125064280664e-09,
+              "significant_fdr": true
+            },
+            "age": {
+              "psi": 0.029353015302295324,
+              "test": "chi2",
+              "statistic": 1824.700542546857,
+              "p_value": 0.0,
+              "significant_fdr": true
+            },
+            "admission_type_id": {
+              "psi": 3.328542650501337,
+              "test": "chi2",
+              "statistic": 271937.26140841533,
+              "p_value": 0.0,
+              "significant_fdr": true
+            },
+            "discharge_disposition_id": {
+              "psi": 0.026818021563884468,
+              "test": "chi2",
+              "statistic": 1764.3584705701724,
+              "p_value": 0.0,
+              "significant_fdr": true
+            },
+            "medical_specialty_grouped": {
+              "psi": 0.47466098728204414,
+              "test": "chi2",
+              "statistic": 12819.624232145969,
+              "p_value": 0.0,
+              "significant_fdr": true
+            },
+            "diag_1_group": {
+              "psi": 0.4699508989552957,
+              "test": "chi2",
+              "statistic": 14595.159693521666,
+              "p_value": 0.0,
+              "significant_fdr": true
+            },
+            "max_glu_serum": {
+              "psi": 0.020563424215534688,
+              "test": "chi2",
+              "statistic": 2915.433063508762,
+              "p_value": 0.0,
+              "significant_fdr": true
+            },
+            "A1Cresult": {
+              "psi": 0.028185621450854195,
+              "test": "chi2",
+              "statistic": 1857.162644017932,
+              "p_value": 0.0,
+              "significant_fdr": true
+            },
+            "insulin": {
+              "psi": 0.015057054761831602,
+              "test": "chi2",
+              "statistic": 920.7253179272476,
+              "p_value": 2.8282224369083057e-199,
+              "significant_fdr": true
+            },
+            "metformin": {
+              "psi": 0.0038749926413184695,
+              "test": "chi2",
+              "statistic": 206.83505886722907,
+              "p_value": 1.4066124863379533e-44,
+              "significant_fdr": true
+            },
+            "glipizide": {
+              "psi": 6.942960497445644e-05,
+              "test": "chi2",
+              "statistic": 3.938710048257728,
+              "p_value": 0.2681588462553774,
+              "significant_fdr": false
+            },
+            "glyburide": {
+              "psi": 0.0012696254987982403,
+              "test": "chi2",
+              "statistic": 67.58671231985063,
+              "p_value": 1.4024631641420812e-14,
+              "significant_fdr": true
+            },
+            "pioglitazone": {
+              "psi": 0.001941019535874165,
+              "test": "chi2",
+              "statistic": 105.37563059114538,
+              "p_value": 1.0847932591819325e-22,
+              "significant_fdr": true
+            },
+            "rosiglitazone": {
+              "psi": 0.0035264920433421255,
+              "test": "chi2",
+              "statistic": 175.62456866267564,
+              "p_value": 7.767732187956907e-38,
+              "significant_fdr": true
+            },
+            "change": {
+              "psi": 0.0013521289522944822,
+              "test": "chi2",
+              "statistic": 75.74051893353851,
+              "p_value": 3.2350068694237403e-18,
+              "significant_fdr": true
+            },
+            "diabetesMed": {
+              "psi": 3.324595980754057e-05,
+              "test": "chi2",
+              "statistic": 1.8498368623779653,
+              "p_value": 0.17380236942265767,
+              "significant_fdr": false
+            }
+          },
+          "n_reference": 27530,
+          "n_window": 55848
+        },
+        "notes": [
+          "22/25 features are statistically significant under FDR but only 5 exceed the PSI threshold. At this sample size significance is not evidence of practical drift; the violation signal follows effect size, not the p-values."
+        ]
+      },
+      {
+        "monitor": "a2_relational",
+        "assumption": "A2",
+        "evidence_class": "OBSERVED",
+        "raw": {
+          "score_psi": 0.15603873603486254,
+          "auroc": 0.6486992462789367,
+          "auroc_delta": 0.023300753721063328,
+          "baseline_auroc": 0.672,
+          "labels_available": true
+        },
+        "threshold": {
+          "score_psi": 0.2,
+          "auroc_delta": 0.05
+        },
+        "violation": 0.7801936801743127,
+        "triggered": false,
+        "evidence": {
+          "label_free_violation": 0.7801936801743127,
+          "label_dependent_violation": 0.46601507442126655
+        },
+        "notes": [
+          "Score drift alone cannot separate covariate shift from concept drift: a change in P(X) moves predicted scores without any change in P(Y|X)."
+        ]
+      },
+      {
+        "monitor": "a3_structural",
+        "assumption": "A3",
+        "evidence_class": "OBSERVED",
+        "raw": {
+          "n_schema_violations": 5,
+          "n_columns_missingness_shift": 0,
+          "n_columns_cardinality_growth": 0,
+          "n_columns_affected": 5,
+          "n_columns_total": 25
+        },
+        "threshold": {
+          "missingness_delta": 0.05,
+          "cardinality_growth": 0.25
+        },
+        "violation": 0.2,
+        "triggered": true,
+        "evidence": {
+          "schema_violations": [
+            {
+              "type": "out_of_range",
+              "column": "num_lab_procedures",
+              "below_min": 0,
+              "above_max": 3,
+              "expected_range": [
+                1.0,
+                118.0
+              ]
+            },
+            {
+              "type": "out_of_range",
+              "column": "number_outpatient",
+              "below_min": 0,
+              "above_max": 5,
+              "expected_range": [
+                0.0,
+                36.0
+              ]
+            },
+            {
+              "type": "out_of_range",
+              "column": "number_inpatient",
+              "below_min": 0,
+              "above_max": 4,
+              "expected_range": [
+                0.0,
+                17.0
+              ]
+            },
+            {
+              "type": "unseen_category",
+              "column": "admission_type_id",
+              "values": [
+                "7"
+              ],
+              "n_unseen": 1
+            },
+            {
+              "type": "unseen_category",
+              "column": "diag_1_group",
+              "values": [
+                "Other_E"
+              ],
+              "n_unseen": 1
+            }
+          ],
+          "missingness": {},
+          "cardinality": {}
+        },
+        "notes": []
+      },
+      {
+        "monitor": "a4_operational",
+        "assumption": "A4",
+        "evidence_class": "SIMULATED",
+        "raw": {
+          "faults": [],
+          "delay_hours": 0.0,
+          "latency_ms": 125.18376288097178,
+          "batch_received": true
+        },
+        "threshold": {
+          "delay_hours": 6.0,
+          "latency_ms": 500.0,
+          "expected": {
+            "schema_version": "v1",
+            "pipeline_version": "1.0.0"
+          }
+        },
+        "violation": 0.0,
+        "triggered": false,
+        "evidence": {
+          "batch": {
+            "window_id": "deployment",
+            "evidence_class": "SIMULATED",
+            "batch_received": true,
+            "delay_hours": 0.0,
+            "latency_ms": 125.18376288097178,
+            "schema_version": "v1",
+            "pipeline_version": "1.0.0"
+          },
+          "faults": {}
+        },
+        "notes": [
+          "SIMULATED OPERATIONAL EVIDENCE. No public dataset carries pipeline telemetry; these events were generated, not observed."
+        ]
+      },
+      {
+        "monitor": "ood",
+        "assumption": "ood",
+        "evidence_class": "OBSERVED",
+        "raw": {
+          "flagged_rate": 0.023349090388196533,
+          "expected_rate": 0.010000000000000009,
+          "excess": 0.013349090388196524,
+          "detector": "mahalanobis",
+          "cutoff": 420.70033909841845
+        },
+        "threshold": {
+          "excess_rate": 0.05,
+          "reference_quantile": 0.99
+        },
+        "violation": 0.2669818077639305,
+        "triggered": false,
+        "evidence": {},
+        "notes": [
+          "Detector: mahalanobis. Ulmer et al. found uncertainty-based methods unreliable as OOD detectors on tabular EHR data; the detector choice is therefore a research variable here, not a settled default."
+        ]
+      },
+      {
+        "monitor": "calibration",
+        "assumption": "calibration",
+        "evidence_class": "OBSERVED",
+        "raw": {
+          "ece": 0.00706330976765315,
+          "mean_predicted": 0.11827975188825651,
+          "observed_rate": 0.11978942844864633
+        },
+        "threshold": {
+          "ece": 0.05,
+          "n_bins": 10
+        },
+        "violation": 0.14126619535306298,
+        "triggered": false,
+        "evidence": {
+          "bins": [
+            {
+              "bin": 0,
+              "n": 30676,
+              "mean_predicted": 0.07353784059625494,
+              "observed_rate": 0.08012778719520146
+            },
+            {
+              "bin": 1,
+              "n": 18589,
+              "mean_predicted": 0.137272641435527,
+              "observed_rate": 0.13927591586422078
+            },
+            {
+              "bin": 2,
+              "n": 4931,
+              "mean_predicted": 0.23592627312567888,
+              "observed_rate": 0.220847698235652
+            },
+            {
+              "bin": 3,
+              "n": 1149,
+              "mean_predicted": 0.34322683453976144,
+              "observed_rate": 0.31418624891209745
+            },
+            {
+              "bin": 4,
+              "n": 340,
+              "mean_predicted": 0.4383086113216395,
+              "observed_rate": 0.38529411764705884
+            },
+            {
+              "bin": 5,
+              "n": 135,
+              "mean_predicted": 0.5459114387372936,
+              "observed_rate": 0.362962962962963
+            },
+            {
+              "bin": 6,
+              "n": 28,
+              "mean_predicted": 0.6298784261364547,
+              "observed_rate": 0.4642857142857143
+            }
+          ]
+        },
+        "notes": [
+          "Requires outcome labels, which a live deployment would not have at monitoring time. Treated here as a retrospective measurement, not as a signal available in real time."
+        ]
+      },
+      {
+        "monitor": "fairness",
+        "assumption": "fairness",
+        "evidence_class": "OBSERVED",
+        "raw": {
+          "max_delta_tpr": 0.38525947736474053,
+          "max_delta_fpr": 0.09457113685593581,
+          "worst_pair": [
+            "age",
+            "[20-30)",
+            "[90-100)"
+          ],
+          "operating_threshold": 0.2106658311969754,
+          "exceeds_null_band": true
+        },
+        "threshold": {
+          "delta_tpr": 0.05,
+          "delta_fpr": 0.05,
+          "min_group_size": 200,
+          "min_positives": 50
+        },
+        "violation": 1.0,
+        "triggered": true,
+        "evidence": {
+          "per_attribute": {
+            "race": {
+              "groups": {
+                "AfricanAmerican": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.2223042836041359,
+                  "fpr": 0.09450867052023121,
+                  "precision": 0.23478939157566303,
+                  "n_flagged": 1282,
+                  "n": 11734,
+                  "n_positive": 1354,
+                  "prevalence": 0.11539117095619567
+                },
+                "Caucasian": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.21766119343211854,
+                  "fpr": 0.08228167592125189,
+                  "precision": 0.27033076349166874,
+                  "n_flagged": 4021,
+                  "n": 40652,
+                  "n_positive": 4994,
+                  "prevalence": 0.12284758437469251
+                },
+                "Hispanic": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.20588235294117646,
+                  "fpr": 0.07632933104631218,
+                  "precision": 0.23931623931623933,
+                  "n_flagged": 117,
+                  "n": 1302,
+                  "n_positive": 136,
+                  "prevalence": 0.10445468509984639
+                },
+                "Other": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.1839080459770115,
+                  "fpr": 0.07673568818514007,
+                  "precision": 0.20253164556962025,
+                  "n_flagged": 79,
+                  "n": 908,
+                  "n_positive": 87,
+                  "prevalence": 0.09581497797356828
+                },
+                "Unknown": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.11842105263157894,
+                  "fpr": 0.06184210526315789,
+                  "precision": 0.16071428571428573,
+                  "n_flagged": 56,
+                  "n": 836,
+                  "n_positive": 76,
+                  "prevalence": 0.09090909090909091
+                }
+              },
+              "delta_tpr": 0.10388323097255696,
+              "delta_fpr": 0.032666565257073316
+            },
+            "gender": {
+              "groups": {
+                "Female": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.21262188515709643,
+                  "fpr": 0.07935733323322948,
+                  "precision": 0.27078302863056225,
+                  "n_flagged": 2899,
+                  "n": 30331,
+                  "n_positive": 3692,
+                  "prevalence": 0.12172364907190664
+                },
+                "Male": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.22048032021347566,
+                  "fpr": 0.08992406412362894,
+                  "precision": 0.24609084139985107,
+                  "n_flagged": 2686,
+                  "n": 25517,
+                  "n_positive": 2998,
+                  "prevalence": 0.11749030058392444
+                }
+              },
+              "delta_tpr": 0.007858435056379232,
+              "delta_fpr": 0.010566730890399459
+            },
+            "age": {
+              "groups": {
+                "[20-30)": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.5192307692307693,
+                  "fpr": 0.1596009975062344,
+                  "precision": 0.3875598086124402,
+                  "n_flagged": 209,
+                  "n": 958,
+                  "n_positive": 156,
+                  "prevalence": 0.162839248434238
+                },
+                "[30-40)": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.32978723404255317,
+                  "fpr": 0.13472584856396866,
+                  "precision": 0.26495726495726496,
+                  "n_flagged": 351,
+                  "n": 2197,
+                  "n_positive": 282,
+                  "prevalence": 0.12835685025034138
+                },
+                "[40-50)": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.300314465408805,
+                  "fpr": 0.0836180904522613,
+                  "precision": 0.31466227347611203,
+                  "n_flagged": 607,
+                  "n": 5611,
+                  "n_positive": 636,
+                  "prevalence": 0.11334877918374621
+                },
+                "[50-60)": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.2422907488986784,
+                  "fpr": 0.08026874115983026,
+                  "precision": 0.244173140954495,
+                  "n_flagged": 901,
+                  "n": 9392,
+                  "n_positive": 908,
+                  "prevalence": 0.09667802385008518
+                },
+                "[60-70)": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.20985010706638116,
+                  "fpr": 0.08392295597484277,
+                  "precision": 0.25609756097560976,
+                  "n_flagged": 1148,
+                  "n": 11577,
+                  "n_positive": 1401,
+                  "prevalence": 0.12101580720393884
+                },
+                "[70-80)": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.19670267197271177,
+                  "fpr": 0.08438466037262929,
+                  "precision": 0.2551622418879056,
+                  "n_flagged": 1356,
+                  "n": 13728,
+                  "n_positive": 1759,
+                  "prevalence": 0.12813228438228438
+                },
+                "[80-90)": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.14623000761614624,
+                  "fpr": 0.0764859643141266,
+                  "precision": 0.22196531791907514,
+                  "n_flagged": 865,
+                  "n": 10112,
+                  "n_positive": 1313,
+                  "prevalence": 0.12984572784810128
+                },
+                "[90-100)": {
+                  "threshold": 0.2106658311969754,
+                  "tpr": 0.1339712918660287,
+                  "fpr": 0.0650298606502986,
+                  "precision": 0.2222222222222222,
+                  "n_flagged": 126,
+                  "n": 1716,
+                  "n_positive": 209,
+                  "prevalence": 0.12179487179487179
+                }
+              },
+              "delta_tpr": 0.38525947736474053,
+              "delta_fpr": 0.09457113685593581
+            }
+          },
+          "suppressed": {
+            "race": [
+              {
+                "group": "Asian",
+                "n": 416,
+                "n_positive": 43,
+                "gate": "min_positives"
+              }
+            ],
+            "age": [
+              {
+                "group": "[0-10)",
+                "n": 108,
+                "n_positive": 1,
+                "gate": "min_group_size"
+              },
+              {
+                "group": "[10-20)",
+                "n": 449,
+                "n_positive": 25,
+                "gate": "min_positives"
+              }
+            ]
+          },
+          "null_bands": {
+            "race": {
+              "delta_tpr_observed": 0.10388323097255696,
+              "null_p95": 0.12820767016484014,
+              "exceeds_null_band": false,
+              "n_permutations": 200
+            },
+            "gender": {
+              "delta_tpr_observed": 0.007858435056379232,
+              "null_p95": 0.01708643708774555,
+              "exceeds_null_band": false,
+              "n_permutations": 200
+            },
+            "age": {
+              "delta_tpr_observed": 0.38525947736474053,
+              "null_p95": 0.10963272543059774,
+              "exceeds_null_band": true,
+              "n_permutations": 200
+            }
+          }
+        },
+        "notes": [
+          "Disparities are uncorrected for case mix: a prevalence difference between groups can produce a rate difference without any model behaviour being at fault. Distinguishing the two is a harm-assessment question for triage (G5), not something this monitor can settle.",
+          "Suppressed groups below n=200: race: ['Asian']; age: ['[0-10)', '[10-20)']"
+        ]
+      }
+    ],
+    "ahs_four_monitors": 0.4123613596794574,
+    "ahs_seven_monitors": 0.4807127406242494,
+    "correction": -0.06835138094479198,
+    "components": {
+      "a1_distribution": 0.2,
+      "a2_relational": 0.15603873603486254,
+      "a3_structural": 0.020000000000000004,
+      "a4_operational": 0.0,
+      "ood": 0.040047271164589573,
+      "calibration": 0.003201252176298414,
+      "fairness": 0.1
+    },
+    "harm_assessment": {
+      "harm_level": "MEASURED",
+      "rationale": "Model behaviour moved: fairness beyond bound.",
+      "input_monitors_triggered": [
+        "a1_distribution",
+        "a3_structural"
+      ],
+      "behaviour_monitors_triggered": [
+        "fairness"
+      ],
+      "corroborated": true,
+      "discounted_as_noise": [],
+      "affected_population": "age: [90-100) vs [20-30)",
+      "ahs": 0.4807127406242494
+    },
+    "a2_label_blind": {
+      "monitor": "a2_relational",
+      "assumption": "A2",
+      "evidence_class": "OBSERVED",
+      "raw": {
+        "score_psi": 0.15603873603486254,
+        "auroc": null,
+        "auroc_delta": null,
+        "baseline_auroc": 0.672,
+        "labels_available": false
+      },
+      "threshold": {
+        "score_psi": 0.2,
+        "auroc_delta": 0.05
+      },
+      "violation": 0.7801936801743127,
+      "triggered": false,
+      "evidence": {
+        "label_free_violation": 0.7801936801743127,
+        "label_dependent_violation": 0.0
+      },
+      "notes": [
+        "Labels withheld (2-window delay declared). Only the label-free score-distribution signal is available; discrimination loss cannot be observed yet.",
+        "Score drift alone cannot separate covariate shift from concept drift: a change in P(X) moves predicted scores without any change in P(Y|X)."
+      ]
+    },
+    "notes": [
+      "Saturated: a1_distribution, fairness. Severity beyond the threshold is not represented; these components cannot get worse.",
+      "Masked at the review band of 0.75: a1_distribution, a2_relational, a3_structural, a4_operational, ood, calibration, fairness. A total violation of any of these cannot by itself trigger review, because its weight is below the 0.25 deficit required."
+    ]
+  }
+}

@@ -1,0 +1,120 @@
+# Monitor configuration.
+#
+# Nothing here is validated. Every threshold is POLICY (see research/paper_analysis.md §0):
+# the brief specifies PSI 0.20 and ECE 0.05; no supplied paper does. They exist as starting
+# points to be varied in the Gate 6 sensitivity experiments, not as correct values.
+#
+# This file is ingested into the assumption registry at build time. Monitors read the
+# registry, never this file — so a monitor cannot run against a configuration that was not
+# recorded with its results.
+
+monitors:
+  a1_distribution:
+    enabled: true
+    psi_bins: 10
+    psi_threshold: 0.20            # POLICY — conventional "significant shift" folklore
+    psi_minor_threshold: 0.10      # POLICY — conventional "moderate shift"
+    ks_alpha: 0.05
+    fdr_method: benjamini_hochberg # per-feature tests are multiplicity-corrected or the
+                                   # alert counts are an artefact of feature count
+    mmd:
+      enabled: true
+      estimator: linear            # O(n) unbiased estimator; the quadratic form is not
+                                   # affordable at replay scale and buys nothing here
+      max_samples: 20000
+      seed: 20260819
+
+  a3_structural:
+    enabled: true
+    missingness_delta_threshold: 0.05   # POLICY — absolute change in a column's missing rate
+    cardinality_growth_threshold: 0.25  # POLICY — relative growth in distinct values
+
+  calibration:
+    enabled: true
+    n_bins: 10
+    ece_threshold: 0.05            # BRIEF_SPECIFIED — no paper provenance found
+    requires_labels: true
+
+  a2_relational:
+    enabled: true
+    psi_bins: 10
+    score_psi_threshold: 0.20       # POLICY — drift in the predicted-score distribution
+    auroc_delta_threshold: 0.05     # POLICY — discrimination loss against the frozen value
+    baseline_auroc: 0.6720          # OBSERVED — EXP001 source-validation AUROC
+    label_delay_windows: 2          # labels are not available at monitoring time; the lag
+                                    # is declared rather than silently ignored
+  a4_operational:
+    enabled: true
+    evidence_class: SIMULATED       # always — no public dataset carries pipeline telemetry
+    delay_hours_threshold: 6.0      # POLICY
+    latency_ms_threshold: 500.0     # POLICY
+    expected:
+      schema_version: "v1"
+      pipeline_version: "1.0.0"
+  ood:
+    enabled: true
+    detector: mahalanobis           # research variable — see EXP007
+    reference_quantile: 0.99        # flag rows beyond this quantile of the reference score
+    excess_rate_threshold: 0.05     # POLICY — excess flagged rate over the expected 1%
+  fairness:
+    enabled: true
+    delta_tpr_threshold: 0.05      # BRIEF_SPECIFIED
+    delta_fpr_threshold: 0.05      # BRIEF_SPECIFIED
+    operating_point_quantile: 0.90 # POLICY — top-decile workload anchor, matches EXP001
+    requires_labels: true
+    # TPR and FPR are rates conditional on the outcome, so a group large enough by ROW
+    # count can still carry too few positives to estimate TPR. Gating on rows alone is
+    # what produced the null-control false alarm in EXP002; min_positives is the fix, and
+    # both gates are reported so the difference stays visible.
+    min_positives: 50              # POLICY
+    null_band:
+      enabled: true
+      n_permutations: 200
+      seed: 20260819
+      percentile: 95
+
+# How raw metrics become violation signals in [0,1] for the AHS.
+# The squashing function is the free parameter nobody specifies and is expected to matter
+# more than the weights (research_questions.md RQ5b). Declared here so it can be varied.
+normalisation:
+  method: threshold_relative       # v = clip(metric / threshold, 0, 1)
+  alternatives: [linear_clip, logistic, empirical_quantile]
+
+# ---------------------------------------------------------------------------
+# AHS aggregation. Everything here is POLICY and is a research variable.
+# ---------------------------------------------------------------------------
+ahs:
+  weights:                    # must sum to 1 over the FULL monitor set
+    a1_distribution: 0.20
+    a2_relational: 0.20
+    a3_structural: 0.10
+    a4_operational: 0.10
+    ood: 0.15
+    calibration: 0.15
+    fairness: 0.10
+
+  # Absolute-threshold monitors and change-detection monitors are different
+  # instruments (EXP002 finding d). Declaring the entry mode per monitor keeps that
+  # distinction explicit instead of summing them as though they were the same.
+  #   absolute          v from the raw metric against its threshold
+  #   baseline_relative v from (metric - freeze-time baseline) against its threshold
+  entry_mode:
+    a1_distribution: absolute          # already a two-sample comparison
+    a3_structural: absolute            # contract conformance is inherently absolute
+    calibration: baseline_relative
+    fairness: baseline_relative
+
+  # What to do when a monitor is absent (not implemented, disabled, or errored).
+  #   zero        treat the missing violation as 0 — makes the system look healthier
+  #   renormalise redistribute its weight across available monitors
+  # Both are computed every run so the difference is visible rather than assumed.
+  missing_monitor_policy: renormalise
+
+governance:
+  bands:                      # POLICY — BRIEF-specified placeholders
+    review: 0.75
+    suspension: 0.50
+  persistence_windows: 2      # consecutive windows a condition must hold before escalating
+  require_corroboration: true # a second, independently designed detector must agree
+                              # before harm is declared (P-NEW Table 7, distribution row)
+  variants: [separated, collapsed]   # separated = detect->judge->govern; collapsed = detect->act

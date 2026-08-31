@@ -1,0 +1,1047 @@
+{
+  "experiment_id": "EXP003",
+  "environment": {
+    "timestamp_utc": "2026-08-30T06:08:41.977554+00:00",
+    "git_commit": "NOT_A_GIT_REPO",
+    "python": "3.13.7",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "numpy": "2.5.2",
+      "pandas": "3.0.5",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.0"
+    }
+  },
+  "config_hash": "9d0c9d48c4bad67c51e9adce69fac547ed93e8f4f79d3208d539a98fb73a3b46",
+  "monitor_config_hash": "64363eedc32f660eafae852000c24d1f4b0802dfef862dd0dece58b714dc96d5",
+  "freeze_baselines": {
+    "calibration": {
+      "metric_key": "ece",
+      "threshold_key": "ece",
+      "value": 0.005996225708887012
+    },
+    "fairness": {
+      "metric_key": "max_delta_tpr",
+      "threshold_key": "delta_tpr",
+      "value": 0.07446999640675533
+    }
+  },
+  "audit_records": 20,
+  "part_a_observed": {
+    "windows": [
+      {
+        "window_id": "W000",
+        "meta": {
+          "strategy": "random_partition",
+          "index": 0,
+          "n": 5585,
+          "evidence_class": "OBSERVED",
+          "caveat": "arbitrary partition of a dataset with no time axis; not a time series"
+        },
+        "ahs": 0.42795710660060293,
+        "ahs_declared_weights": 0.6853764086303316,
+        "ahs_renormalised": 0.42795710660060293,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.014545454545454545,
+          "calibration": 0.04508064257081506,
+          "fairness": 0.14878043264676385
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.08,
+          "calibration": 0.1652956894263219,
+          "fairness": 0.8182923795572011
+        },
+        "saturated": [
+          "a1_distribution"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "NORMAL",
+          "collapsed": "NORMAL"
+        }
+      },
+      {
+        "window_id": "W001",
+        "meta": {
+          "strategy": "random_partition",
+          "index": 1,
+          "n": 5585,
+          "evidence_class": "OBSERVED",
+          "caveat": "arbitrary partition of a dataset with no time axis; not a time series"
+        },
+        "ahs": 0.4128217750447247,
+        "ahs_declared_weights": 0.6770519762745986,
+        "ahs_renormalised": 0.4128217750447247,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.034450952228002485,
+          "fairness": 0.18181818181818182
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 0.12632015816934244,
+          "fairness": 1.0
+        },
+        "saturated": [
+          "a1_distribution",
+          "fairness"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "ABSTENTION_RECOMMENDED",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      },
+      {
+        "window_id": "W002",
+        "meta": {
+          "strategy": "random_partition",
+          "index": 2,
+          "n": 5585,
+          "evidence_class": "OBSERVED",
+          "caveat": "arbitrary partition of a dataset with no time axis; not a time series"
+        },
+        "ahs": 0.47058292043899397,
+        "ahs_declared_weights": 0.7088206062414467,
+        "ahs_renormalised": 0.47058292043899397,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.02909090909090909,
+          "calibration": 0.011258574006757489,
+          "fairness": 0.12543123282697577
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.16,
+          "calibration": 0.04128143802477746,
+          "fairness": 0.6898717805483667
+        },
+        "saturated": [
+          "a1_distribution"
+        ],
+        "harm_level": "POTENTIAL",
+        "states": {
+          "separated": "GOVERNANCE_REVIEW",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      },
+      {
+        "window_id": "W003",
+        "meta": {
+          "strategy": "random_partition",
+          "index": 3,
+          "n": 5585,
+          "evidence_class": "OBSERVED",
+          "caveat": "arbitrary partition of a dataset with no time axis; not a time series"
+        },
+        "ahs": 0.43999999999999995,
+        "ahs_declared_weights": 0.692,
+        "ahs_renormalised": 0.43999999999999995,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.014545454545454545,
+          "calibration": 0.0,
+          "fairness": 0.18181818181818182
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.08,
+          "calibration": 0.0,
+          "fairness": 1.0
+        },
+        "saturated": [
+          "a1_distribution",
+          "fairness"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "GOVERNANCE_REVIEW",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      },
+      {
+        "window_id": "W004",
+        "meta": {
+          "strategy": "random_partition",
+          "index": 4,
+          "n": 5585,
+          "evidence_class": "OBSERVED",
+          "caveat": "arbitrary partition of a dataset with no time axis; not a time series"
+        },
+        "ahs": 0.4287967856302377,
+        "ahs_declared_weights": 0.6858382320966308,
+        "ahs_renormalised": 0.4287967856302377,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.018475941642489623,
+          "fairness": 0.18181818181818182
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 0.06774511935579529,
+          "fairness": 1.0
+        },
+        "saturated": [
+          "a1_distribution",
+          "fairness"
+        ],
+        "harm_level": "POTENTIAL",
+        "states": {
+          "separated": "GOVERNANCE_REVIEW",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      },
+      {
+        "window_id": "W005",
+        "meta": {
+          "strategy": "random_partition",
+          "index": 5,
+          "n": 5585,
+          "evidence_class": "OBSERVED",
+          "caveat": "arbitrary partition of a dataset with no time axis; not a time series"
+        },
+        "ahs": 0.6117186102482327,
+        "ahs_declared_weights": 0.7864452356365279,
+        "ahs_renormalised": 0.6117186102482327,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.014545454545454545,
+          "calibration": 0.010099571569949133,
+          "fairness": 0.0
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.08,
+          "calibration": 0.037031762423146826,
+          "fairness": 0.0
+        },
+        "saturated": [
+          "a1_distribution"
+        ],
+        "harm_level": "POTENTIAL",
+        "states": {
+          "separated": "GOVERNANCE_REVIEW",
+          "collapsed": "GOVERNANCE_REVIEW"
+        }
+      },
+      {
+        "window_id": "W006",
+        "meta": {
+          "strategy": "random_partition",
+          "index": 6,
+          "n": 5585,
+          "evidence_class": "OBSERVED",
+          "caveat": "arbitrary partition of a dataset with no time axis; not a time series"
+        },
+        "ahs": 0.4249064390741044,
+        "ahs_declared_weights": 0.6836985414907574,
+        "ahs_renormalised": 0.4249064390741044,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.021818181818181816,
+          "calibration": 0.0078208336531683,
+          "fairness": 0.18181818181818182
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.12,
+          "calibration": 0.0286763900616171,
+          "fairness": 1.0
+        },
+        "saturated": [
+          "a1_distribution",
+          "fairness"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "GOVERNANCE_REVIEW",
+          "collapsed": "GOVERNANCE_REVIEW"
+        }
+      },
+      {
+        "window_id": "W007",
+        "meta": {
+          "strategy": "random_partition",
+          "index": 7,
+          "n": 5585,
+          "evidence_class": "OBSERVED",
+          "caveat": "arbitrary partition of a dataset with no time axis; not a time series"
+        },
+        "ahs": 0.401563757534966,
+        "ahs_declared_weights": 0.6708600666442313,
+        "ahs_renormalised": 0.401563757534966,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.04570896973776131,
+          "fairness": 0.18181818181818182
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 0.16759955570512483,
+          "fairness": 1.0
+        },
+        "saturated": [
+          "a1_distribution",
+          "fairness"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "ABSTENTION_RECOMMENDED",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      },
+      {
+        "window_id": "W008",
+        "meta": {
+          "strategy": "random_partition",
+          "index": 8,
+          "n": 5584,
+          "evidence_class": "OBSERVED",
+          "caveat": "arbitrary partition of a dataset with no time axis; not a time series"
+        },
+        "ahs": 0.4836546292332725,
+        "ahs_declared_weights": 0.7160100460782999,
+        "ahs_renormalised": 0.4836546292332725,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.014545454545454545,
+          "calibration": 0.018592890883453554,
+          "fairness": 0.11957066170145571
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.08,
+          "calibration": 0.0681739332393297,
+          "fairness": 0.6576386393580064
+        },
+        "saturated": [
+          "a1_distribution"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "ABSTENTION_RECOMMENDED",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      },
+      {
+        "window_id": "W009",
+        "meta": {
+          "strategy": "random_partition",
+          "index": 9,
+          "n": 5584,
+          "evidence_class": "OBSERVED",
+          "caveat": "arbitrary partition of a dataset with no time axis; not a time series"
+        },
+        "ahs": 0.4241947718018422,
+        "ahs_declared_weights": 0.6833071244910132,
+        "ahs_renormalised": 0.4241947718018422,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.014545454545454545,
+          "calibration": 0.015805228198157818,
+          "fairness": 0.18181818181818182
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.08,
+          "calibration": 0.057952503393245335,
+          "fairness": 1.0
+        },
+        "saturated": [
+          "a1_distribution",
+          "fairness"
+        ],
+        "harm_level": "POTENTIAL",
+        "states": {
+          "separated": "GOVERNANCE_REVIEW",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      }
+    ],
+    "ahs_mean": 0.45261967956069765,
+    "ahs_sd": 0.05805163599720851,
+    "ahs_range": [
+      0.401563757534966,
+      0.6117186102482327
+    ],
+    "governance": {
+      "separated": {
+        "variant": "separated",
+        "n_windows": 10,
+        "escalations": 2,
+        "de_escalations": 2,
+        "state_occupancy": {
+          "NORMAL": 1,
+          "MONITOR": 0,
+          "GOVERNANCE_REVIEW": 6,
+          "HUMAN_REVIEW_REQUIRED": 0,
+          "ABSTENTION_RECOMMENDED": 3,
+          "AUTOMATED_PREDICTION_SUSPENSION": 0
+        },
+        "reached_suspension": false,
+        "final_state": "GOVERNANCE_REVIEW"
+      },
+      "collapsed": {
+        "variant": "collapsed",
+        "n_windows": 10,
+        "escalations": 2,
+        "de_escalations": 1,
+        "state_occupancy": {
+          "NORMAL": 1,
+          "MONITOR": 0,
+          "GOVERNANCE_REVIEW": 2,
+          "HUMAN_REVIEW_REQUIRED": 0,
+          "ABSTENTION_RECOMMENDED": 0,
+          "AUTOMATED_PREDICTION_SUSPENSION": 7
+        },
+        "reached_suspension": true,
+        "final_state": "AUTOMATED_PREDICTION_SUSPENSION"
+      }
+    }
+  },
+  "part_b_injected": {
+    "severities": [
+      0.0,
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0,
+      0.75,
+      0.25,
+      0.0,
+      0.0
+    ],
+    "windows": [
+      {
+        "window_id": "R00",
+        "meta": {
+          "strategy": "sequence",
+          "index": 0,
+          "n": 8000,
+          "evidence_class": "INJECTED",
+          "severity": 0.0
+        },
+        "ahs": 0.4319046846510266,
+        "ahs_declared_weights": 0.6875475765580646,
+        "ahs_renormalised": 0.4319046846510266,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.015368042621700674,
+          "fairness": 0.18181818181818182
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 0.056349489612902474,
+          "fairness": 1.0
+        },
+        "saturated": [
+          "a1_distribution",
+          "fairness"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "NORMAL",
+          "collapsed": "NORMAL"
+        }
+      },
+      {
+        "window_id": "R01",
+        "meta": {
+          "strategy": "sequence",
+          "index": 1,
+          "n": 8000,
+          "evidence_class": "INJECTED",
+          "severity": 0.0
+        },
+        "ahs": 0.6290909090909091,
+        "ahs_declared_weights": 0.796,
+        "ahs_renormalised": 0.6290909090909091,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.0,
+          "fairness": 0.0
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 0.0,
+          "fairness": 0.0
+        },
+        "saturated": [
+          "a1_distribution"
+        ],
+        "harm_level": "POTENTIAL",
+        "states": {
+          "separated": "NORMAL",
+          "collapsed": "NORMAL"
+        }
+      },
+      {
+        "window_id": "R02",
+        "meta": {
+          "strategy": "sequence",
+          "index": 2,
+          "n": 8000,
+          "evidence_class": "INJECTED",
+          "severity": 0.25
+        },
+        "ahs": 0.3156559981300634,
+        "ahs_declared_weights": 0.6236107989715348,
+        "ahs_renormalised": 0.3156559981300634,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.1530547627939869,
+          "fairness": 0.16038014816685886
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 0.5612007969112853,
+          "fairness": 0.8820908149177237
+        },
+        "saturated": [
+          "a1_distribution"
+        ],
+        "harm_level": "POTENTIAL",
+        "states": {
+          "separated": "GOVERNANCE_REVIEW",
+          "collapsed": "NORMAL"
+        }
+      },
+      {
+        "window_id": "R03",
+        "meta": {
+          "strategy": "sequence",
+          "index": 3,
+          "n": 8000,
+          "evidence_class": "INJECTED",
+          "severity": 0.5
+        },
+        "ahs": 0.17454545454545456,
+        "ahs_declared_weights": 0.546,
+        "ahs_renormalised": 0.17454545454545456,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 1.0,
+          "fairness": 1.0
+        },
+        "saturated": [
+          "a1_distribution",
+          "calibration",
+          "fairness"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "GOVERNANCE_REVIEW",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      },
+      {
+        "window_id": "R04",
+        "meta": {
+          "strategy": "sequence",
+          "index": 4,
+          "n": 8000,
+          "evidence_class": "INJECTED",
+          "severity": 0.75
+        },
+        "ahs": 0.17454545454545456,
+        "ahs_declared_weights": 0.546,
+        "ahs_renormalised": 0.17454545454545456,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 1.0,
+          "fairness": 1.0
+        },
+        "saturated": [
+          "a1_distribution",
+          "calibration",
+          "fairness"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "ABSTENTION_RECOMMENDED",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      },
+      {
+        "window_id": "R05",
+        "meta": {
+          "strategy": "sequence",
+          "index": 5,
+          "n": 8000,
+          "evidence_class": "INJECTED",
+          "severity": 1.0
+        },
+        "ahs": 0.24125676279878017,
+        "ahs_declared_weights": 0.582691219539329,
+        "ahs_renormalised": 0.24125676279878017,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.11510687356485629
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 1.0,
+          "fairness": 0.6330878046067095
+        },
+        "saturated": [
+          "a1_distribution",
+          "calibration"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "ABSTENTION_RECOMMENDED",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      },
+      {
+        "window_id": "R06",
+        "meta": {
+          "strategy": "sequence",
+          "index": 6,
+          "n": 8000,
+          "evidence_class": "INJECTED",
+          "severity": 0.75
+        },
+        "ahs": 0.17454545454545456,
+        "ahs_declared_weights": 0.546,
+        "ahs_renormalised": 0.17454545454545456,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 1.0,
+          "fairness": 1.0
+        },
+        "saturated": [
+          "a1_distribution",
+          "calibration",
+          "fairness"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "ABSTENTION_RECOMMENDED",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      },
+      {
+        "window_id": "R07",
+        "meta": {
+          "strategy": "sequence",
+          "index": 7,
+          "n": 8000,
+          "evidence_class": "INJECTED",
+          "severity": 0.25
+        },
+        "ahs": 0.27763441680845324,
+        "ahs_declared_weights": 0.6026989292446492,
+        "ahs_renormalised": 0.27763441680845324,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.1696383104642741,
+          "fairness": 0.18181818181818182
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 0.6220071383690051,
+          "fairness": 1.0
+        },
+        "saturated": [
+          "a1_distribution",
+          "fairness"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "ABSTENTION_RECOMMENDED",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      },
+      {
+        "window_id": "R08",
+        "meta": {
+          "strategy": "sequence",
+          "index": 8,
+          "n": 8000,
+          "evidence_class": "INJECTED",
+          "severity": 0.0
+        },
+        "ahs": 0.4373516133851354,
+        "ahs_declared_weights": 0.6905433873618244,
+        "ahs_renormalised": 0.4373516133851354,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.00992111388759188,
+          "fairness": 0.18181818181818182
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 0.0363774175878369,
+          "fairness": 1.0
+        },
+        "saturated": [
+          "a1_distribution",
+          "fairness"
+        ],
+        "harm_level": "MEASURED",
+        "states": {
+          "separated": "ABSTENTION_RECOMMENDED",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      },
+      {
+        "window_id": "R09",
+        "meta": {
+          "strategy": "sequence",
+          "index": 9,
+          "n": 8000,
+          "evidence_class": "INJECTED",
+          "severity": 0.0
+        },
+        "ahs": 0.4742161734328376,
+        "ahs_declared_weights": 0.7108188953880608,
+        "ahs_renormalised": 0.4742161734328376,
+        "missing_monitors": [
+          "a2_relational",
+          "a4_operational",
+          "ood"
+        ],
+        "weights": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.18181818181818182,
+          "calibration": 0.2727272727272727,
+          "fairness": 0.18181818181818182
+        },
+        "components": {
+          "a1_distribution": 0.36363636363636365,
+          "a3_structural": 0.007272727272727273,
+          "calibration": 0.007479564851448378,
+          "fairness": 0.14739517080662307
+        },
+        "violations": {
+          "a1_distribution": 1.0,
+          "a3_structural": 0.04,
+          "calibration": 0.02742507112197739,
+          "fairness": 0.8106734394364268
+        },
+        "saturated": [
+          "a1_distribution"
+        ],
+        "harm_level": "POTENTIAL",
+        "states": {
+          "separated": "GOVERNANCE_REVIEW",
+          "collapsed": "AUTOMATED_PREDICTION_SUSPENSION"
+        }
+      }
+    ],
+    "ahs_by_severity": [
+      [
+        0.0,
+        0.4319046846510266
+      ],
+      [
+        0.0,
+        0.6290909090909091
+      ],
+      [
+        0.25,
+        0.3156559981300634
+      ],
+      [
+        0.5,
+        0.17454545454545456
+      ],
+      [
+        0.75,
+        0.17454545454545456
+      ],
+      [
+        1.0,
+        0.24125676279878017
+      ]
+    ],
+    "monotone_decreasing_on_ramp": false,
+    "governance": {
+      "separated": {
+        "variant": "separated",
+        "n_windows": 10,
+        "escalations": 2,
+        "de_escalations": 1,
+        "state_occupancy": {
+          "NORMAL": 2,
+          "MONITOR": 0,
+          "GOVERNANCE_REVIEW": 3,
+          "HUMAN_REVIEW_REQUIRED": 0,
+          "ABSTENTION_RECOMMENDED": 5,
+          "AUTOMATED_PREDICTION_SUSPENSION": 0
+        },
+        "reached_suspension": false,
+        "final_state": "GOVERNANCE_REVIEW"
+      },
+      "collapsed": {
+        "variant": "collapsed",
+        "n_windows": 10,
+        "escalations": 1,
+        "de_escalations": 0,
+        "state_occupancy": {
+          "NORMAL": 3,
+          "MONITOR": 0,
+          "GOVERNANCE_REVIEW": 0,
+          "HUMAN_REVIEW_REQUIRED": 0,
+          "ABSTENTION_RECOMMENDED": 0,
+          "AUTOMATED_PREDICTION_SUSPENSION": 7
+        },
+        "reached_suspension": true,
+        "final_state": "AUTOMATED_PREDICTION_SUSPENSION"
+      }
+    }
+  }
+}

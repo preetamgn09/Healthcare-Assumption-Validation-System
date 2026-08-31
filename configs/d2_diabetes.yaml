@@ -1,0 +1,86 @@
+# D2 — Diabetes 130-US Hospitals (UCI #296)
+# Every cohort, split and feature decision is declared here. Nothing is hardcoded in src/.
+dataset:
+  id: d2_diabetes130
+  version: "uci-296"
+  raw_file: data/raw/diabetic_data.csv
+  expected_sha256: "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97"
+  expected_rows: 101766
+  expected_cols: 50
+  citation: "Clore, J., Cios, K., DeShazo, J., Strack, B. (2014). Diabetes 130-US Hospitals for Years 1999-2008. UCI ML Repository. DOI 10.24432/C5230J"
+  licence: "CC BY 4.0"
+  provenance_status: "MIRROR_UNVERIFIED"   # see research/experiment_log.md EXP001
+
+cohort:
+  # Readmission is undefined for these discharges: expired / hospice.
+  exclude_discharge_disposition_ids: [11, 13, 14, 19, 20, 21]
+  exclude_gender_values: ["Unknown/Invalid"]
+  # Missing race is kept as its own category — dropping it would bias the fairness analysis.
+  missing_token: "?"
+  missing_label: "Unknown"
+
+label:
+  source_column: readmitted
+  positive_values: ["<30"]
+  name: readmit_30d
+
+domain:
+  # The shift axis. Source = non-emergency admissions, target = emergency admissions.
+  column: admission_source_id
+  target_values: [7]              # 7 = Emergency Room
+  unknown_values: [9, 15, 17, 20, 21]   # not-mapped / NULL — excluded from the domain contrast
+  source_name: non_emergency
+  target_name: emergency
+  # If true, drops target encounters belonging to patients seen in training.
+  # Conservative, but biases the target population by removing returning patients.
+  exclude_overlapping_patients: false
+
+split:
+  group_column: patient_nbr       # split by PATIENT, never by encounter
+  validation_fraction: 0.25
+  seed: 20260819
+
+features:
+  numeric:
+    - time_in_hospital
+    - num_lab_procedures
+    - num_procedures
+    - num_medications
+    - number_outpatient
+    - number_emergency
+    - number_inpatient
+    - number_diagnoses
+  categorical:
+    - race
+    - gender
+    - age
+    - admission_type_id
+    - discharge_disposition_id
+    - medical_specialty_grouped
+    - diag_1_group
+    - max_glu_serum
+    - A1Cresult
+    - insulin
+    - metformin
+    - glipizide
+    - glyburide
+    - pioglitazone
+    - rosiglitazone
+    - change
+    - diabetesMed
+  # Excluded from the model but retained in the raw frame for structural monitoring (A3):
+  excluded_but_monitored:
+    - weight            # ~97% missing
+    - payer_code        # ~40% missing
+    - diag_2
+    - diag_3
+    - admission_source_id   # defines the domain; would leak the shift into the model
+
+subgroups:
+  attributes: [race, gender, age]
+  min_group_size: 200   # below this, no fairness claim is made
+
+models:
+  seed: 20260819
+  candidates: [prevalence, logistic_regression, gradient_boosting]
+  selection_metric: auprc      # selected on SOURCE validation only; target stays sealed

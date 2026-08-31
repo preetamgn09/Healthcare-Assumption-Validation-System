@@ -1,0 +1,636 @@
+{
+  "registry_version": "0.3.0",
+  "gate": "G3",
+  "owner": "TO_BE_ASSIGNED",
+  "effective_date": "2026-08-30T06:07:55.538251+00:00",
+  "model": {
+    "model_id": "d2_readmit30_gradient_boosting",
+    "model_version": "1.0.0-frozen",
+    "experiment_id": "EXP001",
+    "algorithm": "gradient_boosting",
+    "selected_by": "auprc on source-domain validation",
+    "frozen": true,
+    "retraining_policy": "NONE during the primary monitoring experiment (BRIEF \u00a749)",
+    "artifact": "results\\models\\EXP001_frozen_model.joblib",
+    "artifact_sha256": "87e52b2ff52033c645296a473f8181fd521f2fca465d99d7ad7e83b219cc2748",
+    "features": {
+      "numeric": [
+        "time_in_hospital",
+        "num_lab_procedures",
+        "num_procedures",
+        "num_medications",
+        "number_outpatient",
+        "number_emergency",
+        "number_inpatient",
+        "number_diagnoses"
+      ],
+      "categorical": [
+        "race",
+        "gender",
+        "age",
+        "admission_type_id",
+        "discharge_disposition_id",
+        "medical_specialty_grouped",
+        "diag_1_group",
+        "max_glu_serum",
+        "A1Cresult",
+        "insulin",
+        "metformin",
+        "glipizide",
+        "glyburide",
+        "pioglitazone",
+        "rosiglitazone",
+        "change",
+        "diabetesMed"
+      ]
+    },
+    "training_domain": "non_emergency",
+    "deployment_domain": "emergency",
+    "validation_metrics": {
+      "n": 9108,
+      "prevalence": 0.10726833552920509,
+      "auroc": 0.6719982044280787,
+      "auprc": 0.2256022794637454,
+      "brier": 0.09097440865508045,
+      "ece": 0.005996225708887012,
+      "operating_point": {
+        "threshold": 0.19366640465757182,
+        "tpr": 0.2436028659160696,
+        "fpr": 0.08276964702988562,
+        "precision": 0.26125137211855104,
+        "n_flagged": 911
+      }
+    },
+    "environment": {
+      "timestamp_utc": "2026-08-30T06:07:50.621724+00:00",
+      "git_commit": "NOT_A_GIT_REPO",
+      "python": "3.13.7",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "packages": {
+        "numpy": "2.5.2",
+        "pandas": "3.0.5",
+        "scikit-learn": "1.9.0",
+        "scipy": "1.18.0"
+      }
+    },
+    "seed": 20260819
+  },
+  "dataset": {
+    "id": "d2_diabetes130",
+    "version": "uci-296",
+    "licence": "CC BY 4.0",
+    "citation": "Clore, J., Cios, K., DeShazo, J., Strack, B. (2014). Diabetes 130-US Hospitals for Years 1999-2008. UCI ML Repository. DOI 10.24432/C5230J",
+    "provenance": {
+      "raw": {
+        "file": "data/raw/diabetic_data.csv",
+        "sha256_expected": "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97",
+        "sha256_actual": "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97",
+        "checksum_match": true,
+        "provenance_status": "MIRROR_UNVERIFIED"
+      },
+      "cohort": {
+        "rows_in": 101766,
+        "dropped_discharge_expired_or_hospice": 2423,
+        "dropped_invalid_gender": 3,
+        "rows_out": 99340
+      },
+      "domain": {
+        "source_encounters": 36638,
+        "target_encounters": 55848,
+        "dropped_unknown_admission_source": 6854,
+        "source_prevalence": 0.10604,
+        "target_prevalence_SEALED": null
+      },
+      "split": {
+        "train_encounters": 27530,
+        "validation_encounters": 9108,
+        "train_patients": 23089,
+        "validation_patients": 7696,
+        "patient_overlap_train_validation": 0,
+        "train_prevalence": 0.10563,
+        "validation_prevalence": 0.10727,
+        "patient_overlap_train_target": 4679
+      },
+      "features": {
+        "medical_specialty_vocabulary": [
+          "Unknown",
+          "InternalMedicine",
+          "Cardiology",
+          "Family/GeneralPractice",
+          "Surgery-General",
+          "Orthopedics",
+          "Radiologist",
+          "Orthopedics-Reconstructive",
+          "Nephrology",
+          "ObstetricsandGynecology",
+          "Surgery-Cardiovascular/Thoracic",
+          "Urology"
+        ],
+        "fitted_on": "train"
+      }
+    }
+  },
+  "label_definition": {
+    "source_column": "readmitted",
+    "positive_values": [
+      "<30"
+    ],
+    "name": "readmit_30d"
+  },
+  "feature_expectations": {
+    "n_rows_fitted_on": 27530,
+    "columns": {
+      "time_in_hospital": {
+        "kind": "numeric",
+        "dtype": "int64",
+        "min": 1.0,
+        "max": 14.0,
+        "mean": 4.452560842717036,
+        "missing_rate": 0.0
+      },
+      "num_lab_procedures": {
+        "kind": "numeric",
+        "dtype": "int64",
+        "min": 1.0,
+        "max": 118.0,
+        "mean": 38.3212132219397,
+        "missing_rate": 0.0
+      },
+      "num_procedures": {
+        "kind": "numeric",
+        "dtype": "int64",
+        "min": 0.0,
+        "max": 6.0,
+        "mean": 1.80904467853251,
+        "missing_rate": 0.0
+      },
+      "num_medications": {
+        "kind": "numeric",
+        "dtype": "int64",
+        "min": 1.0,
+        "max": 81.0,
+        "mean": 17.060588448964765,
+        "missing_rate": 0.0
+      },
+      "number_outpatient": {
+        "kind": "numeric",
+        "dtype": "int64",
+        "min": 0.0,
+        "max": 36.0,
+        "mean": 0.34754812931347623,
+        "missing_rate": 0.0
+      },
+      "number_emergency": {
+        "kind": "numeric",
+        "dtype": "int64",
+        "min": 0.0,
+        "max": 76.0,
+        "mean": 0.10497638939338903,
+        "missing_rate": 0.0
+      },
+      "number_inpatient": {
+        "kind": "numeric",
+        "dtype": "int64",
+        "min": 0.0,
+        "max": 17.0,
+        "mean": 0.5170722847802397,
+        "missing_rate": 0.0
+      },
+      "number_diagnoses": {
+        "kind": "numeric",
+        "dtype": "int64",
+        "min": 1.0,
+        "max": 16.0,
+        "mean": 7.069051943334544,
+        "missing_rate": 0.0
+      },
+      "race": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 6,
+        "categories": [
+          "AfricanAmerican",
+          "Asian",
+          "Caucasian",
+          "Hispanic",
+          "Other",
+          "Unknown"
+        ],
+        "missing_rate": 0.0
+      },
+      "gender": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 2,
+        "categories": [
+          "Female",
+          "Male"
+        ],
+        "missing_rate": 0.0
+      },
+      "age": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 10,
+        "categories": [
+          "[0-10)",
+          "[10-20)",
+          "[20-30)",
+          "[30-40)",
+          "[40-50)",
+          "[50-60)",
+          "[60-70)",
+          "[70-80)",
+          "[80-90)",
+          "[90-100)"
+        ],
+        "missing_rate": 0.0
+      },
+      "admission_type_id": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 7,
+        "categories": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "8"
+        ],
+        "missing_rate": 0.0
+      },
+      "discharge_disposition_id": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 19,
+        "categories": [
+          "1",
+          "10",
+          "12",
+          "15",
+          "18",
+          "2",
+          "22",
+          "23",
+          "24",
+          "25",
+          "27",
+          "28",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "missing_rate": 0.0
+      },
+      "medical_specialty_grouped": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 13,
+        "categories": [
+          "Cardiology",
+          "Family/GeneralPractice",
+          "InternalMedicine",
+          "Nephrology",
+          "ObstetricsandGynecology",
+          "Orthopedics",
+          "Orthopedics-Reconstructive",
+          "Other",
+          "Radiologist",
+          "Surgery-Cardiovascular/Thoracic",
+          "Surgery-General",
+          "Unknown",
+          "Urology"
+        ],
+        "missing_rate": 0.0
+      },
+      "diag_1_group": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 11,
+        "categories": [
+          "Circulatory",
+          "Diabetes",
+          "Digestive",
+          "Genitourinary",
+          "Injury",
+          "Missing",
+          "Musculoskeletal",
+          "Neoplasms",
+          "Other",
+          "Other_V",
+          "Respiratory"
+        ],
+        "missing_rate": 0.0
+      },
+      "max_glu_serum": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 4,
+        "categories": [
+          ">200",
+          ">300",
+          "None",
+          "Norm"
+        ],
+        "missing_rate": 0.0
+      },
+      "A1Cresult": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 4,
+        "categories": [
+          ">7",
+          ">8",
+          "None",
+          "Norm"
+        ],
+        "missing_rate": 0.0
+      },
+      "insulin": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 4,
+        "categories": [
+          "Down",
+          "No",
+          "Steady",
+          "Up"
+        ],
+        "missing_rate": 0.0
+      },
+      "metformin": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 4,
+        "categories": [
+          "Down",
+          "No",
+          "Steady",
+          "Up"
+        ],
+        "missing_rate": 0.0
+      },
+      "glipizide": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 4,
+        "categories": [
+          "Down",
+          "No",
+          "Steady",
+          "Up"
+        ],
+        "missing_rate": 0.0
+      },
+      "glyburide": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 4,
+        "categories": [
+          "Down",
+          "No",
+          "Steady",
+          "Up"
+        ],
+        "missing_rate": 0.0
+      },
+      "pioglitazone": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 4,
+        "categories": [
+          "Down",
+          "No",
+          "Steady",
+          "Up"
+        ],
+        "missing_rate": 0.0
+      },
+      "rosiglitazone": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 4,
+        "categories": [
+          "Down",
+          "No",
+          "Steady",
+          "Up"
+        ],
+        "missing_rate": 0.0
+      },
+      "change": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 2,
+        "categories": [
+          "Ch",
+          "No"
+        ],
+        "missing_rate": 0.0
+      },
+      "diabetesMed": {
+        "kind": "categorical",
+        "dtype": "str",
+        "cardinality": 2,
+        "categories": [
+          "No",
+          "Yes"
+        ],
+        "missing_rate": 0.0
+      }
+    }
+  },
+  "subgroups": {
+    "attributes": [
+      "race",
+      "gender",
+      "age"
+    ],
+    "min_group_size": 200
+  },
+  "monitored_assumptions": {
+    "A1_distributional": {
+      "status": "NOT_IMPLEMENTED",
+      "gate": "G4"
+    },
+    "A2_relational": {
+      "status": "NOT_IMPLEMENTED",
+      "gate": "G7"
+    },
+    "A3_structural": {
+      "status": "SCHEMA_CONTRACT_ONLY",
+      "gate": "G4"
+    },
+    "A4_operational": {
+      "status": "NOT_IMPLEMENTED",
+      "gate": "G4",
+      "evidence_class": "SIMULATED"
+    },
+    "calibration": {
+      "status": "MEASURED_AT_FREEZE",
+      "gate": "G4"
+    },
+    "ood": {
+      "status": "NOT_IMPLEMENTED",
+      "gate": "G7"
+    },
+    "fairness": {
+      "status": "MEASURED_AT_FREEZE",
+      "gate": "G4"
+    }
+  },
+  "thresholds": {
+    "_provenance": "BRIEF_SPECIFIED / POLICY \u2014 placeholders, never evaluated",
+    "psi": 0.2,
+    "ece": 0.05,
+    "fairness_delta": 0.05,
+    "ahs_review": 0.75,
+    "ahs_suspension": 0.5
+  },
+  "ahs_weights": {
+    "_provenance": "POLICY \u2014 equal weighting placeholder; a research variable, not a default",
+    "a1": 0.2,
+    "a2": 0.2,
+    "a3": 0.1,
+    "a4": 0.1,
+    "ood": 0.15,
+    "calibration": 0.15,
+    "fairness": 0.1
+  },
+  "governance_policy": {
+    "status": "NOT_IMPLEMENTED",
+    "gate": "G5"
+  },
+  "validation_history": [],
+  "registry_hash": "8a59922d7f84f68bd45d8a77afc9a1af8cbfb3dab0b85262fc59d46f2ee5e374",
+  "sealed_deployment_set": {
+    "n_encounters": 55848,
+    "n_patients": 40371,
+    "seal_hash": "a8434c682de9df21104ae72c89b2fa2db3b47cea007fc6e6129f35b06eef6f86",
+    "labels_inspected_at_gate3": false,
+    "note": "Opened at G5 for deployment replay. Any earlier metric on this set invalidates the experiment."
+  },
+  "monitor_config": {
+    "monitors": {
+      "a1_distribution": {
+        "enabled": true,
+        "psi_bins": 10,
+        "psi_threshold": 0.2,
+        "psi_minor_threshold": 0.1,
+        "ks_alpha": 0.05,
+        "fdr_method": "benjamini_hochberg",
+        "mmd": {
+          "enabled": true,
+          "estimator": "linear",
+          "max_samples": 20000,
+          "seed": 20260819
+        }
+      },
+      "a3_structural": {
+        "enabled": true,
+        "missingness_delta_threshold": 0.05,
+        "cardinality_growth_threshold": 0.25
+      },
+      "calibration": {
+        "enabled": true,
+        "n_bins": 10,
+        "ece_threshold": 0.05,
+        "requires_labels": true
+      },
+      "a2_relational": {
+        "enabled": true,
+        "psi_bins": 10,
+        "score_psi_threshold": 0.2,
+        "auroc_delta_threshold": 0.05,
+        "baseline_auroc": 0.672,
+        "label_delay_windows": 2
+      },
+      "a4_operational": {
+        "enabled": true,
+        "evidence_class": "SIMULATED",
+        "delay_hours_threshold": 6.0,
+        "latency_ms_threshold": 500.0,
+        "expected": {
+          "schema_version": "v1",
+          "pipeline_version": "1.0.0"
+        }
+      },
+      "ood": {
+        "enabled": true,
+        "detector": "mahalanobis",
+        "reference_quantile": 0.99,
+        "excess_rate_threshold": 0.05
+      },
+      "fairness": {
+        "enabled": true,
+        "delta_tpr_threshold": 0.05,
+        "delta_fpr_threshold": 0.05,
+        "operating_point_quantile": 0.9,
+        "requires_labels": true,
+        "min_positives": 50,
+        "null_band": {
+          "enabled": true,
+          "n_permutations": 200,
+          "seed": 20260819,
+          "percentile": 95
+        }
+      }
+    },
+    "normalisation": {
+      "method": "threshold_relative",
+      "alternatives": [
+        "linear_clip",
+        "logistic",
+        "empirical_quantile"
+      ]
+    },
+    "ahs": {
+      "weights": {
+        "a1_distribution": 0.2,
+        "a2_relational": 0.2,
+        "a3_structural": 0.1,
+        "a4_operational": 0.1,
+        "ood": 0.15,
+        "calibration": 0.15,
+        "fairness": 0.1
+      },
+      "entry_mode": {
+        "a1_distribution": "absolute",
+        "a3_structural": "absolute",
+        "calibration": "baseline_relative",
+        "fairness": "baseline_relative"
+      },
+      "missing_monitor_policy": "renormalise"
+    },
+    "governance": {
+      "bands": {
+        "review": 0.75,
+        "suspension": 0.5
+      },
+      "persistence_windows": 2,
+      "require_corroboration": true,
+      "variants": [
+        "separated",
+        "collapsed"
+      ]
+    }
+  },
+  "freeze_baselines": {
+    "calibration": {
+      "metric_key": "ece",
+      "threshold_key": "ece",
+      "value": 0.005996225708887012
+    },
+    "fairness": {
+      "metric_key": "max_delta_tpr",
+      "threshold_key": "delta_tpr",
+      "value": 0.07446999640675533
+    }
+  }
+}
