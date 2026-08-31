@@ -1,0 +1,8 @@
+# Gate 3 dependencies. Deliberately minimal — no framework is added before a measured need.
+pandas>=2.0
+numpy>=1.24
+scikit-learn>=1.3
+scipy>=1.10
+PyYAML>=6.0
+joblib>=1.3
+pytest>=7.0
